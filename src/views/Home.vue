@@ -7,13 +7,13 @@
       multiple
       :collapse-tags="true"
       :sy-attrs="{
-        label:'mySelect',
+        label: 'mySelect12',
         huge,
-        option:{
-          label:(item)=>`${item.productName}(${item.productCode})`,
-          value:'id',
+        option: {
+          label: (item) => `${item.productName}(${item.productCode})`,
+          value: 'id',
         },
-        dataSource:selectOptions
+        dataSource: selectOptions,
       }"
     >
       <div slot="empty">暂无数据</div>
@@ -48,49 +48,49 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import SelectB from '~/select/index.vue'
-import CascaderB from '~/cascader/index.vue'
-import { data as selectOptions } from '@/data/select.js'
-import { data as cascaderOptions } from '@/data/cascader.js'
-import { productMessage } from '@/api'
+import Vue from "vue";
+import SelectB from "~/select/index.vue";
+import CascaderB from "~/cascader/index.vue";
+import { data as selectOptions } from "@/data/select.js";
+import { data as cascaderOptions } from "@/data/cascader.js";
+import { productMessage } from "@/api";
 export default Vue.extend({
-  name: 'Home',
+  name: "Home",
   components: {
     SelectB,
-    CascaderB
+    CascaderB,
   },
   data() {
     return {
       huge: {
         api: productMessage,
-        searchKey: 'productCodeOrName',
+        searchKey: "productCodeOrName",
         resFilter: (res) => res.data.list,
         params: {
           pageNum: 1,
-          pageSize: 100
-        }
+          pageSize: 100,
+        },
       },
-      renderList: ['SelectB', 'CascaderB-'],
+      renderList: ["SelectB", "CascaderB-"],
       selectOptions,
-      value: '',
+      value: "",
       cascaderValue: [],
-      cascaderOptions
-    }
+      cascaderOptions,
+    };
   },
   mounted() {
     // console.log('🚀 ~ mounted ~ mounted')
     setTimeout(() => {
       // this.selectOptions = []
-    })
+    });
     // const res = productMessage({ pageNum: 1, pageSize: 100 })
     // console.log('🚀 ~ mounted ~ res', res)
   },
   methods: {
     console() {
-      console.log('🚀 ~ console ~ cascaderValue', this.cascaderValue)
-      console.log('🚀 ~ echo ~ this.value', this.value)
-    }
-  }
-})
+      console.log("🚀 ~ console ~ cascaderValue", this.cascaderValue);
+      console.log("🚀 ~ echo ~ this.value", this.value);
+    },
+  },
+});
 </script>
